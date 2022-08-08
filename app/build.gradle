@@ -4,6 +4,10 @@ plugins {
 }
 
 android {
+    // By defining it, R and BuildConfig classes are generated in this package
+    namespace "com.github.erfansn.gradlepractice"
+    testNamespace "com.github.erfansn.gradlepractice.testing"
+
     compileSdk 32
 
     defaultConfig {
