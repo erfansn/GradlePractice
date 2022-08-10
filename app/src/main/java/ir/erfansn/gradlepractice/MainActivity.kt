@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.github.erfansn.gradlepractice.R
 import com.github.erfansn.gradlepractice.databinding.ActivityMainBinding
+import kotlinx.datetime.Instant
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Because of the use of `api` configuration, we can access Kotlin date dependency
+        Instant.DISTANT_FUTURE
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
