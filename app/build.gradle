@@ -42,8 +42,10 @@ dependencies {
     implementation project(':mylibrary')
     // implementation 'androidx.core:core-ktx:1.7.0'
     implementation group: 'androidx.core', name: 'core-ktx', version: '1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2' {
+        // exclude group: 'com.example.imgtools', module: 'native'
+    }
 
-    implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
