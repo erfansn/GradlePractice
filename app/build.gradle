@@ -34,6 +34,21 @@ android {
             applicationIdSuffix ".debugStaging"
         }
     }
+
+    flavorDimensions "version"
+    productFlavors {
+        full {
+            // AGP automatically add module's flavor to that dimension because only one dimension defined
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
+        demo {
+            dimension "version"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
