@@ -36,15 +36,22 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle false
+    }
 }
 
 dependencies {
     implementation project(':mylibrary')
     // implementation 'androidx.core:core-ktx:1.7.0'
     implementation group: 'androidx.core', name: 'core-ktx', version: '1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2' {
-        // exclude group: 'com.example.imgtools', module: 'native'
-    }
+    implementation 'androidx.appcompat:appcompat:1.4.2' /*{
+        exclude group: 'com.example.imgtools', module: 'native'
+    }*/
 
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

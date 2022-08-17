@@ -11,7 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.github.erfansn.gradlepractice.R
 import com.github.erfansn.gradlepractice.databinding.ActivityMainBinding
-import ir.erfansn.lib.MyClass
+// import ir.erfansn.lib.MyClass
 import kotlinx.datetime.Instant
 
 class MainActivity : AppCompatActivity() {
