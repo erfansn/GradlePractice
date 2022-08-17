@@ -29,6 +29,10 @@ android {
             applicationIdSuffix ".debug"
             debuggable true
         }
+        staging {
+            initWith debug
+            applicationIdSuffix ".debugStaging"
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
