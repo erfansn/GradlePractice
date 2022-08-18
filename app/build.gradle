@@ -68,6 +68,12 @@ android {
             versionNameSuffix "-minApi21"
         }
     }
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (names.contains("minApi21") && names.contains("demo")) {
+            setIgnore(true)
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
