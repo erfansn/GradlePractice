@@ -35,17 +35,37 @@ android {
         }
     }
 
-    flavorDimensions "version"
+    flavorDimensions "api", "mode"
     productFlavors {
         full {
+            dimension "mode"
             // AGP automatically add module's flavor to that dimension because only one dimension defined
             applicationIdSuffix ".full"
             versionNameSuffix "-full"
         }
         demo {
-            dimension "version"
+            dimension "mode"
             applicationIdSuffix ".demo"
             versionNameSuffix "-demo"
+        }
+
+        minApi24 {
+            dimension "api"
+            minSdkVersion 24
+            versionCode 30000 + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi24"
+        }
+        minApi23 {
+            dimension "api"
+            minSdkVersion 23
+            versionCode 20000  + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi23"
+        }
+        minApi21 {
+            dimension "api"
+            minSdkVersion 21
+            versionCode 10000  + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi21"
         }
     }
 
