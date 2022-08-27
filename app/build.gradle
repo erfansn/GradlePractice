@@ -5,6 +5,8 @@ plugins {
 
 android {
     // By defining it, R and BuildConfig classes are generated in this package
+    // Should always keep the some as applicationId
+    // Do not set testNamespace and namespace to the same value, otherwise there will be namespace collisions.
     namespace "com.github.erfansn.gradlepractice"
     testNamespace "com.github.erfansn.gradlepractice.testing"
 
@@ -20,6 +22,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Each build variant represents a different version of your app that you can build.
+    // For example, you might want to build one version of your app that's free, with a limited set of content,
+    // and another paid version that includes more.
+    // We cannot configure build variants directly instead, you do configure the build types and product flavors that form them.
     buildTypes {
         release {
             minifyEnabled false
@@ -34,12 +40,15 @@ android {
             applicationIdSuffix ".debugStaging"
         }
     }
-
+    // Specifies the flavor dimensions you want to use. The order in which you
+    // list each dimension determines its priority, from highest to lowest,
+    // when Gradle merges variant sources and configurations. You must assign
+    // each product flavor you configure to one of the flavor dimensions.
     flavorDimensions "api", "mode"
     productFlavors {
         full {
+            // AGP automatically add module's flavor to that dimension if only one dimension defined
             dimension "mode"
-            // AGP automatically add module's flavor to that dimension because only one dimension defined
             applicationIdSuffix ".full"
             versionNameSuffix "-full"
         }
@@ -52,6 +61,9 @@ android {
         minApi24 {
             dimension "api"
             minSdkVersion 24
+            // To ensure the target device receives the version of the app with
+            // the highest compatible API level, assign version codes in increasing
+            // value with API level
             versionCode 30000 + android.defaultConfig.versionCode
             versionNameSuffix "-minApi24"
         }
@@ -68,6 +80,8 @@ android {
             versionNameSuffix "-minApi21"
         }
     }
+    // We can remove certain build variant configurations by creating a variant filter in
+    // your module-level gradle file
     variantFilter { variant ->
         def names = variant.flavors*.name
         if (names.contains("minApi21") && names.contains("demo")) {
@@ -95,9 +109,17 @@ android {
 }
 
 dependencies {
+    // When conflict occur gradle automatically resolve it with update dependency libs version on compile classpath
+    // But when dependency on runtime classpath version below than compile classpath this mechanism doesn't work
+
+    // Dependency on a local library module
     implementation project(':mylibrary')
-    // implementation 'androidx.core:core-ktx:1.7.0'
+
+    // Into two way we can add remote binary to dependencies
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation group: 'androidx.core', name: 'core-ktx', version: '1.7.0'
+
+    // To exclude transitive dependency we can use `exclude` key
     implementation 'androidx.appcompat:appcompat:1.4.2' /*{
         exclude group: 'com.example.imgtools', module: 'native'
     }*/

@@ -30,7 +30,17 @@ android {
 }
 
 dependencies {
+    // With `api` dependency configuration unlike `implementation` we can access to it in another module
+    // that dependency on this module
+    // We can assume api and implementation like visibility modifier public internal
+    // With implementation dependency confi we can access to it on another module only runtime
+    // With api dependency confi we can access to it on another module in runtime and compile time
     api 'org.jetbrains.kotlinx:kotlinx-datetime:0.4.0'
+
+    // Dependency on local binaries
+    // With compileOnly gradle adds it to compile classpath thus don't add to output build
+    // You can't use the compileOnly configuration with AAR dependencies.
+    // With runtimeOnly gradle adds it to runtime classpath thus we can access to it only runtime
     compileOnly project(':lib')
 
     implementation 'androidx.core:core-ktx:1.7.0'
