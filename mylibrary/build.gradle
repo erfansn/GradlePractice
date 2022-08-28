@@ -33,8 +33,8 @@ dependencies {
     // With `api` dependency configuration unlike `implementation` we can access to it in another module
     // that dependency on this module
     // We can assume api and implementation like visibility modifier public internal
-    // With implementation dependency confi we can access to it on another module only runtime
-    // With api dependency confi we can access to it on another module in runtime and compile time
+    // With implementation dependency configuration we can access to it on another module only runtime
+    // With api dependency configuration we can access to it on another module in runtime and compile time
     api 'org.jetbrains.kotlinx:kotlinx-datetime:0.4.0'
 
     // Dependency on local binaries
