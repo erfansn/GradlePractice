@@ -19,6 +19,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        // Note that there is no issue when a library dependency includes a build type that your app does not.
+        // That's because the plugin simply never requests that build type from the dependency.
+        qa
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
