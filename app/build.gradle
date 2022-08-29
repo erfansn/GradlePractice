@@ -124,6 +124,11 @@ dependencies {
         exclude group: 'com.example.imgtools', module: 'native'
     }*/
 
+    // For add a dependency to a specific build variant or test source set
+    // we can prefix dependency configuration with build variants or test source set.
+    demoImplementation project(":mylibrary")
+    testDemoImplementation project(":lib")
+
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
