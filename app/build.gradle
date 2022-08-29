@@ -62,6 +62,12 @@ android {
             dimension "mode"
             applicationIdSuffix ".demo"
             versionNameSuffix "-demo"
+            // Specifies a sorted list of fallback flavors that the plugin
+            // should try to use when a dependency's matching dimension does
+            // not include a "free" flavor. You may specify as many
+            // fallbacks as you like, and the plugin selects the first flavor
+            // that's available in the dependency's "tier" dimension.
+            matchingFallbacks = ['full']
         }
 
         minApi24 {

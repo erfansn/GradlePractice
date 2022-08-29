@@ -23,6 +23,16 @@ android {
         // That's because the plugin simply never requests that build type from the dependency.
         qa
     }
+    flavorDimensions 'mode'
+    productFlavors {
+        full
+        free
+        // Note that, for a given flavor dimension that exists in both the app and its library dependencies,
+        // there is no issue when a library includes a product flavor that your app does not.
+        // That's because the plugin simply never requests that flavor from the dependency.
+        beta
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
