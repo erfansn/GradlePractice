@@ -23,7 +23,7 @@ android {
         // That's because the plugin simply never requests that build type from the dependency.
         qa
     }
-    flavorDimensions 'mode'
+    flavorDimensions 'tier'
     productFlavors {
         full
         free
