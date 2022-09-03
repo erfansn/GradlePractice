@@ -28,6 +28,17 @@ android {
         // sorted list of fallbacks for the dimension.
         missingDimensionStrategy 'tier', 'full', 'free'
     }
+    // Including the passwords for your release key and keystore inside the build file is not a good
+    // security practice alternatively we can configure the build file to obtain these passwords from
+    // environment variables `System.getenv("ENVIRONMENT_KEY")`
+    signingConfigs {
+        release {
+            storeFile file("..\\gradlepractice.jks")
+            storePassword "password"
+            keyAlias "GradlePractice"
+            keyPassword "password"
+        }
+    }
 
     // Each build variant represents a different version of your app that you can build.
     // For example, you might want to build one version of your app that's free, with a limited set of content,
@@ -35,6 +46,8 @@ android {
     // We cannot configure build variants directly instead, you do configure the build types and product flavors that form them.
     buildTypes {
         release {
+            signingConfig signingConfigs.release
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
