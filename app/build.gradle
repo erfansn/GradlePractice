@@ -10,12 +10,12 @@ android {
     namespace "com.github.erfansn.gradlepractice"
     testNamespace "com.github.erfansn.gradlepractice.testing"
 
-    compileSdk 32
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "ir.erfansn.gradlepractice"
         minSdk 21
-        targetSdk 32
+        targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -152,8 +152,8 @@ dependencies {
     implementation project(':mylibrary')
 
     // Into two way we can add remote binary to dependencies
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation group: 'androidx.core', name: 'core-ktx', version: '1.7.0'
+    implementation "androidx.core:core-ktx:${androidx.coreKtx}"
+    implementation group: 'androidx.core', name: 'core-ktx', version: androidx.coreKtx
 
     // To exclude transitive dependency we can use `exclude` key
     implementation 'androidx.appcompat:appcompat:1.4.2' /*{
