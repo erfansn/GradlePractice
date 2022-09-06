@@ -27,6 +27,15 @@ android {
         // "minApi18" flavor. You can include additional flavor names to provide a
         // sorted list of fallbacks for the dimension.
         missingDimensionStrategy 'tier', 'full', 'free'
+
+        // For settings specific to a product flavor, configure these properties
+        // for each flavor in the productFlavors block.
+        // Creates a property for the FileProvider authority.
+        def filesAuthorityValue = applicationId + ".files"
+        // Creates a placeholder property to use in the manifest.
+        manifestPlaceholders = [filesAuthority: filesAuthorityValue]
+        // Adds a new field for the authority to the BuildConfig class.
+        buildConfigField("String", "FILES_AUTHORITY", "\"${filesAuthorityValue}\"")
     }
     // Including the passwords for your release key and keystore inside the build file is not a good
     // security practice alternatively we can configure the build file to obtain these passwords from
@@ -50,10 +59,22 @@ android {
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // These values are defined only for the release build, which
+            // is typically used for full builds and continuous builds.
+            buildConfigField("String", "BUILD_TIME", "12")
+            resValue("string", "build_time", "12")
         }
         debug {
             applicationIdSuffix ".debug"
             debuggable true
+
+            // Use static values for incremental builds to ensure that
+            // resource files and BuildConfig aren't rebuilt with each run.
+            // If these rebuild dynamically, they can interfere with
+            // Apply Changes as well as Gradle UP-TO-DATE checks.
+            buildConfigField("String", "BUILD_TIME", "\"0\"")
+            resValue("string", "build_time", "0")
         }
         staging {
             initWith debug
@@ -64,6 +85,13 @@ android {
             // like, and the plugin selects the first build type that's
             // available in the dependency.
             matchingFallbacks = ['debug', 'release']
+
+            // Use static values for incremental builds to ensure that
+            // resource files and BuildConfig aren't rebuilt with each run.
+            // If these rebuild dynamically, they can interfere with
+            // Apply Changes as well as Gradle UP-TO-DATE checks.
+            buildConfigField("String", "BUILD_TIME", "\"0\"")
+            resValue("string", "build_time", "0")
         }
     }
     // To change build type for testing
