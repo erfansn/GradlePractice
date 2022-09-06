@@ -104,6 +104,8 @@ android {
             // value with API level
             versionCode 30000 + android.defaultConfig.versionCode
             versionNameSuffix "-minApi24"
+
+            proguardFile 'minapi24-rules.pro'
         }
         minApi23 {
             dimension "api"
