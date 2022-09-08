@@ -26,7 +26,7 @@ android {
         // a dependency that includes a "minApi" dimension, it should select the
         // "minApi18" flavor. You can include additional flavor names to provide a
         // sorted list of fallbacks for the dimension.
-        missingDimensionStrategy 'tier', 'full', 'free'
+        missingDimensionStrategy 'tier', 'full', 'free', 'dev'
 
         // For settings specific to a product flavor, configure these properties
         // for each flavor in the productFlavors block.
@@ -110,7 +110,7 @@ android {
             // You can override the default selection at the product flavor
             // level by configuring another missingDimensionStrategy property
             // for the 'minApi' dimension.
-            missingDimensionStrategy 'tier', 'full', 'free'
+            missingDimensionStrategy 'tier', 'full'
         }
         demo {
             dimension "mode"
@@ -122,6 +122,14 @@ android {
             // fallbacks as you like, and the plugin selects the first flavor
             // that's available in the dependency's "tier" dimension.
             matchingFallbacks = ['full']
+        }
+        dev {
+            dimension "mode"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            // The following configuration limits the "dev" flavor to using
+            // English stringresources and xxhdpi screen-density resources.
+            // resourceConfigurations "en", "xxhdpi"
         }
 
         minApi24 {
