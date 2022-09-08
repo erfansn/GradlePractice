@@ -3,6 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+int MILLIS_IN_MINUTE = 1000 * 60
+int minutesSinceEpoch = System.currentTimeMillis() / MILLIS_IN_MINUTE
+
 android {
     // By defining it, R and BuildConfig classes are generated in this package
     // Should always keep the some as applicationId
@@ -62,8 +65,8 @@ android {
 
             // These values are defined only for the release build, which
             // is typically used for full builds and continuous builds.
-            buildConfigField("String", "BUILD_TIME", "12")
-            resValue("string", "build_time", "12")
+            buildConfigField("String", "BUILD_TIME", "\"$minutesSinceEpoch\"")
+            resValue("string", "build_time", "$minutesSinceEpoch")
         }
         debug {
             applicationIdSuffix ".debug"
