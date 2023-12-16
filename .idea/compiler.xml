@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
-      <module name="Gradle_Practice.app" target="11" />
-      <module name="Gradle_Practice.mylibrary" target="11" />
+    <bytecodeTargetLevel target="17">
       <module name="GradlePractice.app" target="11" />
       <module name="GradlePractice.mylibrary" target="11" />
     </bytecodeTargetLevel>
